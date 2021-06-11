@@ -9,14 +9,14 @@ import 'angular-ui-router';
 import './config/app.templates';
 // Import our app functionaity
 import './layout';
-import './components';
+// import './components';
 import './home';
-import './profile';
-import './article';
+// import './profile';
+// import './article';
 import './services';
 import './auth';
-import './settings';
-import './editor';
+// import './settings';
+// import './editor';
 
 
 // Create and bootstrap application
@@ -24,14 +24,14 @@ const requires = [
   'ui.router',
   'templates',
   'app.layout',
-  'app.components',
+  // 'app.components',
   'app.home',
-  'app.profile',
-  'app.article',
+  // 'app.profile',
+  // 'app.article',
   'app.services',
   'app.auth',
-  'app.settings',
-  'app.editor'
+  // 'app.settings',
+  // 'app.editor'
 ];
 
 // Mount on window for testing
