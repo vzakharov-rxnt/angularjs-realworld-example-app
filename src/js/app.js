@@ -26,12 +26,16 @@ const requires = [
 // Mount on window for testing
 window.app = angular.module('app', requires);
 
-angular.module('app').constant('AppConstants', constants);
+function mount(el) {
+        angular.module('app').constant('AppConstants', constants);
 
-angular.module('app').config(appConfig);
+        angular.module('app').config(appConfig);
 
-angular.module('app').run(appRun);
+        angular.module('app').run(appRun);
 
-angular.bootstrap(document, ['app'], {
-  strictDi: true
-});
+        angular.bootstrap(el, ['app'], {
+          strictdi: true
+        });        
+}
+
+window.mountAngularApp = mount;

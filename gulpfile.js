@@ -9,6 +9,8 @@ var rename        = require('gulp-rename');
 var templateCache = require('gulp-angular-templatecache');
 var uglify        = require('gulp-uglify');
 var merge         = require('merge-stream');
+var minifyCSS     = require('gulp-minify-css');
+var concat        = require('gulp-concat')
 
 // Where our files are located
 var jsFiles   = "src/js/**/*.js";
@@ -27,6 +29,12 @@ var interceptErrors = function(error) {
   this.emit('end');
 };
 
+gulp.task('css', function(){
+  return gulp.src('./src/css/*.css')
+    .pipe(minifyCSS())    
+    .pipe(concat('main.css'))
+    .pipe(gulp.dest('./build/'))
+});
 
 gulp.task('browserify', ['views'], function() {
   return browserify('./src/js/app.js')
@@ -69,7 +77,8 @@ gulp.task('build', ['html', 'browserify'], function() {
   return merge(html,js);
 });
 
-gulp.task('default', ['html', 'browserify'], function() {
+
+gulp.task('default', ['html', 'browserify', 'css'], function() {
 
   browserSync.init(['./build/**/**.**'], {
     server: "./build",
